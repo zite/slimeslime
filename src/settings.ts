@@ -21,8 +21,8 @@ export const modelSettings = {
     }
 }
 export const sceneScale = 0.1;
-export const gameSessionId = "TIC_TAC_TOE_SESSION_1234";
-export const gameNameSpace = "TIC_TAC_TOE";
+export const gameSessionId = "SLIMESLIME_SESSION_1234";
+export const gameNameSpace = "SLIMESLIME";
 export const gameTickRate = 1000;
 export const ownershipLease = 500;
 
