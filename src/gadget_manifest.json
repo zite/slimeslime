@@ -7,5 +7,5 @@
 	"width": 1024,
 	"height": 1024,
 	"model": "models/board.glb",
-	"startAutomatically": false
+	"startAutomatically": true
 }
