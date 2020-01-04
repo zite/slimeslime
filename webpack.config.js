@@ -8,6 +8,7 @@ module.exports =
 	{
 		mode: "development",
 		devtool: "inline-source-map",
+
 		entry: './src/main.tsx',
 
 		output:
@@ -29,7 +30,8 @@ module.exports =
 				[
 					{ from: './src/styles.css', to: 'styles.css' },
 					{ from: './src/gadget_manifest.json', to: 'gadget_manifest.json' },
-					{ from: './src/models', to: 'models' }
+					{ from: './src/models/placeholder.glb', to: 'models/placeholder.glb' },
+					{ from: './src/models/slime.glb', to: 'models/slime.glb' },
 				]
 				),
 		],
@@ -57,21 +59,10 @@ module.exports =
 					[
 						'file-loader'
 					]
-				},
-				{
-					test: /.js$/,
-					use: ['source-map-loader'],
-					enforce: 'pre',
-					exclude: [ /@tlaukkan/ ] // TSM has source maps but not source
 				}
 					
 			]
 		},
-
-		resolve:
-		{
-			extensions: ['.ts', '.tsx', '.js']
-		}
 	}
 ];
 

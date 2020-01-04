@@ -1,11 +1,10 @@
 {
-	"name": "SlimeSlime",
+	"name": "Simple Clock",
 	"permissions": [
-		"scenegraph",
-		"master"
+		"scenegraph"
 	],
-	"width": 1024,
-	"height": 1024,
-	"model": "models/board.glb",
+	"width": 512,
+	"height": 512,
+	"model": "models/placeholder.glb",
 	"startAutomatically": true
 }
