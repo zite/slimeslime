@@ -7,16 +7,16 @@ import { AvGadget, AvTransform, AvPanel, AvGrabbable, AvModel, HighlightType, Gr
 import { EndpointAddr, AvGrabEvent, endpointAddrToString } from '@aardvarkxr/aardvark-shared';
 
 
-interface SimpleClockState
+interface SlimeState
 {
 	grabbableHighlight: HighlightType;
 }
 
-class SimpleClock extends React.Component< {}, SimpleClockState >
+class Slime extends React.Component< {}, SlimeState >
 {
 	private m_secondInterval: number = 0;
 	private bounceY: number = 0;
-	private bounceRate: number = 0.02;
+	private bounceRate: number = 0.04;
 	private bounceYMin: number = 0.025;
 	private bounceScale: number = 0.25;
 
@@ -47,7 +47,7 @@ class SimpleClock extends React.Component< {}, SimpleClockState >
 
 	public componentWillMount()
 	{
-		this.m_secondInterval = window.setInterval( () => { this.forceUpdate(); }, 12 );
+		this.m_secondInterval = window.setInterval( () => { this.forceUpdate(); }, 10 );
 	}
 
 	public componentWillUnmount()
@@ -95,4 +95,4 @@ class SimpleClock extends React.Component< {}, SimpleClockState >
 	}
 }
 
-ReactDOM.render( <SimpleClock/>, document.getElementById( "root" ) );
+ReactDOM.render( <Slime/>, document.getElementById( "root" ) );
