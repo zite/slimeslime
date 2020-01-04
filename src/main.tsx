@@ -9,20 +9,22 @@ import { EndpointAddr, AvGrabEvent, endpointAddrToString } from '@aardvarkxr/aar
 
 interface SimpleClockState
 {
-	count: number;
 	grabbableHighlight: HighlightType;
 }
 
 class SimpleClock extends React.Component< {}, SimpleClockState >
 {
 	private m_secondInterval: number = 0;
+	private bounceY: number = 0;
+	private bounceRate: number = 0.02;
+	private bounceYMin: number = 0.025;
+	private bounceScale: number = 0.25;
 
 	constructor( props: any )
 	{
 		super( props );
 		this.state = 
 		{ 
-			count: 0,
 			grabbableHighlight: HighlightType.None,
 		};
 	}
@@ -45,7 +47,7 @@ class SimpleClock extends React.Component< {}, SimpleClockState >
 
 	public componentWillMount()
 	{
-		this.m_secondInterval = window.setInterval( () => { this.forceUpdate(); }, 100 );
+		this.m_secondInterval = window.setInterval( () => { this.forceUpdate(); }, 12 );
 	}
 
 	public componentWillUnmount()
@@ -53,9 +55,12 @@ class SimpleClock extends React.Component< {}, SimpleClockState >
 		window.clearInterval( this.m_secondInterval );
 	}
 
-
 	public render()
 	{
+		this.bounceY += this.bounceRate / this.m_secondInterval;
+		let bounce = (Math.sin(this.bounceY) * this.bounceScale);
+		bounce = Math.max(bounce, 0);
+
 		let sDivClasses:string;
 		let scale = 0.05;
 		switch( this.state.grabbableHighlight )
@@ -83,7 +88,7 @@ class SimpleClock extends React.Component< {}, SimpleClockState >
 		return (
 			<AvGrabbable preserveDropTransform={ true } updateHighlight={ this.onHighlightGrabbable } > 
 				<AvTransform uniformScale={ this.state.grabbableHighlight == HighlightType.InRange ? 0.011 : 0.009 }
-							translateZ={ -2 } translateY={ Math.sin(now.getMilliseconds()) / 10 } rotateY={ 180 } >
+							translateZ={ -2 } translateY={ bounce } rotateY={ 180 } >
 					<AvModel uri={ "/models/slime.glb" } />
 				</AvTransform>
 			</AvGrabbable>	);
