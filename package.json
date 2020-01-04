@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "webpack --env=production",
-		"start": "webpack --env=dev --watch --progress"
+		"start": "webpack --env=dev --watch --progress",
+		"heroku-postbuild": "webpack -p"
 	},
 	"keywords": [],
 	"author": "Keith Bradner",
@@ -23,7 +24,7 @@
 		"tslib": "^1.10.0",
 		"typescript": "^3.5.2",
 		"webpack": "^4.41.2",
-		"webpack-cli": "^3.3.6"
+		"webpack-cli": "^3.3.10"
 	},
 	"dependencies": {
 		"@aardvarkxr/aardvark-react": "0.0.9",
